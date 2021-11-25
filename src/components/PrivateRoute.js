@@ -8,7 +8,10 @@ const PrivateRoute = ({component: Component, exact, path}) => {
         exact={exact}
         path={path}
         render={(props) => (
-        autheduser ? <Component /> : <Redirect exact to="/"></Redirect>
+        autheduser ? <Component /> : <Redirect  to={{
+            pathname:"/",
+            state: {from: path} //props to the router using state object      
+            }}></Redirect>
         )}
         />
     )

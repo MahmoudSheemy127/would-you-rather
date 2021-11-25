@@ -31,6 +31,12 @@ const LeaderBoard = () => {
                             User
                         </TableCell>
                         <TableCell>
+                            Answers
+                        </TableCell>
+                        <TableCell>
+                            Questions
+                        </TableCell>
+                        <TableCell>
                             Activity
                         </TableCell>
                     </TableHead>
@@ -49,33 +55,17 @@ const LeaderBoard = () => {
                                 </ListItem>
                             </TableCell>
                             <TableCell>
+                                {Object.keys(users[user].answers).length}
+                            </TableCell>
+                            <TableCell>
+                                {users[user].questions.length}
+                            </TableCell>
+                            <TableCell>
                                 {Object.keys(users[user].answers).length + users[user].questions.length}
                             </TableCell>
                         </TableRow>                    
                     
                     )}
-                        {/* <TableRow>
-                            <TableCell>
-                                2
-                            </TableCell>
-                            <TableCell>
-                                Aony
-                            </TableCell>
-                            <TableCell>
-                                8
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>
-                                3
-                            </TableCell>
-                            <TableCell>
-                                Moji
-                            </TableCell>
-                            <TableCell>
-                                5
-                            </TableCell>
-                        </TableRow> */}
                     </TableBody>
                 </Table>
             </TableContainer>

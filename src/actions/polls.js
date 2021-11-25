@@ -13,14 +13,6 @@ export const getPolls = (polls) => ({
     polls
 })
 
-// export const getAnsweredPolls = (polls) => {
-//     return (dispatch,state) => {
-//         const answered = [];
-//         answered = Object.keys(polls).map((key) =>{
-            
-//         })
-//     }
-// }
 
 export const addVote = (autheduser,id,answer) => ({
     type: ADD_VOTE,

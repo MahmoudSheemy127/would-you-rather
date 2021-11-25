@@ -59,6 +59,8 @@ code {
   /* justify-content: space-between; */
 }
 
+
+
 .post-poll{
   display: flex;
   flex-direction: column;
@@ -76,13 +78,20 @@ code {
 }
 
 #answer{
-  font-size: 10px;
+  font-size: 15px;
+  color:goldenrod;
 }
 
 .percentage{
   border: 1px solid #ccc;
   width: 80px;
   text-align: center;
+}
+.percentage-bar{
+  width: 100%;
+  background-color: green;
+  color: white;
+  height: 100%;
 }
 
 #combo-box-demo{

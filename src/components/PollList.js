@@ -9,9 +9,17 @@ import { useHistory } from 'react-router-dom';
 const PollList = () => {
     //get state
     const state = useSelector((state) => state)
-    const dispatch = useDispatch()
     const [toggle, setToggle] = useState(true);
-    const history = useHistory()
+    const compare = (a,b) => {
+        if(state.polls[a].timestamp >  state.polls[b].timestamp)
+        {
+            return -1;
+        }
+        else
+        {
+            return 1;
+        }
+    }
 
     return (
         <div className="polls-menu">
@@ -28,7 +36,7 @@ const PollList = () => {
             </div>
             <Stack spacing={5}>
                 {
-                    Object.keys(state.polls).map((key) => {                        
+                    Object.keys(state.polls).sort(compare).map((key) => {                        
                         //filter out answered and unanswered polls
                         if((state.polls[key].optionOne.votes.includes(state.autheduser) || 
                         state.polls[key].optionTwo.votes.includes(state.autheduser))){

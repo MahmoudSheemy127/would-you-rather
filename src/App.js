@@ -16,6 +16,7 @@ import Error from './components/404';
 import {
   BrowserRouter as Router,
   Route,
+  Switch
 } from "react-router-dom";
 
 function App() {
@@ -36,17 +37,17 @@ function App() {
     <LoadingBar />
       {loading === 0 ?
        <>
-       <Navbar></Navbar>        
-              <Route exact path="/" >
-                <LoginPage />
+       <Navbar></Navbar>    
+              <Switch>
+              <Route exact path="/"  render={(props) => <LoginPage {...props} />}>
               </Route>
-              <PrivateRoute component={PollList} exact path="/home">
-              </PrivateRoute>
-              
-              <PrivateRoute component={AnswerPoll} exact path="/answer/:id"></PrivateRoute>
-              <PrivateRoute component={QuestionPoll} exact path="/question"></PrivateRoute>
+              <PrivateRoute component={PollList} exact path="/home">              
+              </PrivateRoute>                             
+              <Route component={AnswerPoll} exact path="/answer/:id" />
+              <PrivateRoute component={QuestionPoll} exact path="/add"></PrivateRoute>
               <PrivateRoute component={LeaderBoard} exact path="/leaderboard"></PrivateRoute>
-              <PrivateRoute component={Error}   path="*"></PrivateRoute>
+              <Route component={Error}  />
+              </Switch>
        </>       
        : null }
     </Fragment>

@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useState} from 'react'
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -6,21 +6,28 @@ import Avatar from '@mui/material/Avatar';
 import {  Button, TextField } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { Autocomplete } from '@mui/material';
-import { handleGetUsers } from '../actions/users';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../actions/users';
-import { Link, useHistory} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 
-const LoginPage = () => {
+const LoginPage = (props) => {
     const state = useSelector((state) => state);
     const [user,setUser] = useState("")
     const dispatch = useDispatch()
     const history = useHistory();
     const navigate = () => {
         dispatch(selectUser(user));
-        history.push("/home");
+        //Redirect to the route clicked when user is authenticated
+        if(props.location.state)
+        {
+            history.push(`${props.location.state.from}`);
+        }
+        else{
+            history.push('/home');
+        }
     }
+
 
     return (
         <div className="login-page">
